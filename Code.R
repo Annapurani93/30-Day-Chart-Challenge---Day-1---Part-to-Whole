@@ -21,16 +21,14 @@ women1%>%
 colnames(women1)<-c("Country","Gender","Share")
 
 ggplot(women1, aes(x = hsize, y = Share, fill = Gender)) +
-  geom_col(show.legend = FALSE) +
   coord_polar(theta = "y") +
   xlim(c(0.2, hsize + 0.5))+
   facet_wrap(~Country)+
-  geom_text(aes(label = paste0(Share,"%")),size=2.1,
-            colour="black",
-            position = position_stack(vjust = 0.5),
-            show.legend = FALSE) +
   geom_col(color = "white")+
   scale_fill_manual(values = c("#000000", "#70dbb7"))+
+  geom_text(aes(label = paste0(Share,"%")),size=2.1,
+             colour="black",
+             position = position_stack(vjust = 0.5)) +
   theme(axis.title = element_blank(),
         axis.ticks = element_blank(),
         axis.text= element_blank(),
@@ -52,7 +50,7 @@ ggplot(women1, aes(x = hsize, y = Share, fill = Gender)) +
         subtitle="<span style='color:#ffffff'>In most advanced countries - including the US and the UK, <span style= 'color:#70dbb7'> Women <span style='color:#ffffff'>account for <br>less than 50% of the total workforce. However, in India, the share is abysmal<br> at 20% </span>",
        caption="Data: Statista| Design and Analysis: @annapurani93")->plot
 
-ggsave("womenshare.png",plot,width=9,height=12.8)
-ggsave("womenshare.pdf",plot,width=9,height=12.8)
+ggsave("womenshare.png",plot,width=9,height=12.7)
+ggsave("womenshare.pdf",plot,width=9,height=12.7)
 
 
